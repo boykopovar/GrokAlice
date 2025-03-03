@@ -2,6 +2,7 @@ FROM python:3.11-slim
 
 RUN apt-get update && apt-get install -y \
     wget \
+    xvfb \
     libxi6 \
     libgconf-2-4 \
     && wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
@@ -14,4 +15,4 @@ COPY requirements.txt .
 COPY main.py .
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["sh", "-c", "gunicorn main:app --bind 0.0.0.0:$PORT"]
+CMD ["sh", "-c", "gunicorn main:app --bind 0.0.0.0:$PORT --timeout 300"]
