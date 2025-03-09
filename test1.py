@@ -1,6 +1,6 @@
 import httpx
 
-URL = "https://grokalice.onrender.com/alice"
+URL = "http://127.0.0.1:5000/alice"
 
 def send_request(text):
     payload = {
