@@ -1,4 +1,6 @@
 import os
+from typing import Optional
+
 from flask import Flask, request, jsonify
 from grok3api.client import GrokClient
 import threading
@@ -12,6 +14,7 @@ app = Flask(__name__)
 PERSONALITY = os.getenv("PERSONALITY", "Отвечай максимально кратко.\n")
 SCENARIO_ID = os.getenv("SCENARIO_ID")
 YANDEX_API_TOKEN = os.getenv("YANDEX_API_TOKEN")
+CLIENT: Optional[GrokClient] = None
 
 current_answer = None
 current_query_id = 0
